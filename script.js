@@ -110,7 +110,7 @@ let scoreInterval = setInterval(() => {
 
       let progress = Math.min((score / 50) * 100, 100);
       progressBar.style.height = progress + "%";
-      if (progress >= 50) {
+      if (progress >= 100) {
         winGame();
       }
 
