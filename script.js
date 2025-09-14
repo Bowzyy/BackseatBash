@@ -108,7 +108,7 @@ let scoreInterval = setInterval(() => {
     if (!anyBossLooking) {
       score++;
 
-      let progress = Math.min(score, 50);
+      let progress = Math.min((score / 50) * 100, 100);
       progressBar.style.height = progress + "%";
       if (progress >= 50) {
         winGame();
@@ -169,7 +169,7 @@ restartBtn.addEventListener("click", () => {
   fiddle = false;
   gameOver = false;
   score = 0;
-  statusEl.textContent = "Edge your boyfriend without his family seeing! Dodge the prying eyes of his brother and his mum! Save the relationship!";
+  statusEl.textContent = "Edge your boyfriend without his family seeing! Get to France while dodging the prying eyes of his brother and his mum! Save the realtionship!";
 
   // reset player and bosses
   player.el.src = player.sprites.idle;
