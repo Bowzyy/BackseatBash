@@ -4,12 +4,6 @@ body {
   background: #f2f2f2;
 }
 
-#score {
-  font-size: 32px; 
-  font-weight: bold;
-  color: #ff0000; 
-}
-
 #game {
   position: relative;
   width: 1000px;
@@ -37,7 +31,7 @@ body {
 
 #boss1 {
   width: 900px;
-  top: 25px;
+  top: 22px;
   left: 100px;
 }
 #boss2 {
@@ -59,4 +53,37 @@ body {
 
 #restart:hover {
   background: #45a049;
+}
+
+#progress-container {
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  width: 30px;
+  height: 250px;
+  border: 2px solid #000;
+  background: #eee;
+  display: flex;
+  align-items: flex-end; /* fill from bottom */
+}
+
+#progress-bar {
+  width: 100%;
+  height: 0%; /* height will change dependent on score*/
+  background: linear-gradient(to top, #c42c2c, #ffffff, rgb(30, 0, 255));
+  /*transition: height 0.3s ease;*/
+}
+
+.franceometer {
+  rotate: 90deg;
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  right: -40px;
+  top: 70px;
+}
+
+#game.win {
+  background: url("images/win_screen.png") no-repeat center center;
+  background-size: cover;
 }

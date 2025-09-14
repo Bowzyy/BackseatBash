@@ -22,11 +22,14 @@ const bosses = [
 ];
 
 const statusEl = document.getElementById("status");
-const scoreEl = document.getElementById("score");
 const restartBtn = document.getElementById("restart");
 
 const bgMusic = document.getElementById("bgMusic");
 const caughtSound = document.getElementById("caughtSound");
+const franceSound = document.getElementById("franceSound");
+
+const progressBar = document.getElementById("progress-bar");
+const gameContainer = document.getElementById("game");
 
 let fiddle = false;
 let gameOver = false;
@@ -104,12 +107,41 @@ let scoreInterval = setInterval(() => {
     const anyBossLooking = bosses.some(b => b.el.src.includes("_looking"));
     if (!anyBossLooking) {
       score++;
-      scoreEl.textContent = score;
+
+      let progress = Math.min(score, 50);
+      progressBar.style.height = progress + "%";
+      if (progress >= 50) {
+        winGame();
+      }
+
     } else if (anyBossLooking && fiddle) {
       endGame("OOOKAYYYY");
     }
   }
 }, 500);
+
+// win game
+function winGame() {
+  gameOver = true;
+  statusEl.textContent = "You made it to France!";
+  restartBtn.style.display = "inline-block";
+  clearAllTimeouts();
+
+  // hide player and bosses
+  player.el.style.display = "none";
+  bosses.forEach(boss => boss.el.style.display = "none");
+
+  // set win background
+  gameContainer.classList.add("win");
+
+  // stop music
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+
+  franceSound.play();
+}
+
+
 
 // game over, make reset button appear
 function endGame(message) {
@@ -137,22 +169,37 @@ restartBtn.addEventListener("click", () => {
   fiddle = false;
   gameOver = false;
   score = 0;
-  scoreEl.textContent = "0";
-  statusEl.textContent = "Edge your boyfriend without his family seeing! Dodge the prying eyes of his brother and his mum! Save the realtionship!";
-  player.el.src = player.sprites.idle;
+  statusEl.textContent = "Edge your boyfriend without his family seeing! Dodge the prying eyes of his brother and his mum! Save the relationship!";
 
+  // reset player and bosses
+  player.el.src = player.sprites.idle;
+  player.el.style.display = "block";
   bosses.forEach(boss => {
     boss.el.src = boss.sprites.idle;
+    boss.el.style.display = "block";
   });
 
+  // reset bar
+  progressBar.style.height = "0%";
+
+  // remove win screen
+  gameContainer.classList.remove("win");
+
   restartBtn.style.display = "none";
+
   clearAllTimeouts();
-  
+
+  // stop french music if playing
+  franceSound.pause();
+  franceSound.currentTime = 0;
+
   bgMusic.currentTime = 0;
   bgMusic.play();
 
   bosses.forEach(bossCycle);
 });
+
+
 
 // start
 bosses.forEach(bossCycle);

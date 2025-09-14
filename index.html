@@ -8,20 +8,25 @@
 <body>
   <h1>Family rub and tug!</h1>
 
+  <p id="status">Edge your boyfriend without his family seeing! Get to France while dodging the prying eyes of
+    his brother and his mum! Save the realtionship!</p>
+
   <div id="game">
   <img id="player" src="images/player_idle.png" alt="Player">  <!-- toots -->
   <img id="boss1" class="boss" src="images/boss1_idle.png" alt="Boss 1">   <!-- melisser -->
   <img id="boss2" class="boss" src="images/boss2_idle.png" alt="Boss 2">   <!-- joseph -->
-</div>
 
-  <p id="status">Edge your boyfriend without his family seeing! Dodge the prying eyes of
-    his brother and his mum! Save the realtionship!</p>
-  <p>Score: <span id="score">0</span></p>
+  <div id="progress-container"> <!-- franceometer -->
+  <div id="progress-bar"></div>
+  <p class="franceometer">Franceometer</p>
+  </div>
+</div>
 
   <button id="restart" style="display: none;">Restart!</button>
 
   <audio id="bgMusic" src="audio/background_music.mp3" loop></audio>
   <audio id="caughtSound" src="audio/caught_sound.mp3"></audio>
+  <audio id="franceSound" src="audio/french_song.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
