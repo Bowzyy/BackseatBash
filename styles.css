@@ -1,0 +1,56 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+  background: #f2f2f2;
+}
+
+#game {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  border: 2px solid black;
+  background: url("images/background.png") no-repeat center center;
+  background-size: cover;
+}
+
+#player {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  width: 500px; 
+  height: auto;
+}
+
+.boss {
+  position: absolute;
+  bottom: 0;
+  width: 500px;
+  height: auto;
+}
+
+#boss1 {
+  width: 900px;
+  top: 25px;
+  left: 100px;
+}
+#boss2 {
+  left: 0px;
+}
+
+#restart {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+#restart:hover {
+  background: #45a049;
+}
