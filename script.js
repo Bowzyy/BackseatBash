@@ -25,6 +25,9 @@ const statusEl = document.getElementById("status");
 const scoreEl = document.getElementById("score");
 const restartBtn = document.getElementById("restart");
 
+const bgMusic = document.getElementById("bgMusic");
+const caughtSound = document.getElementById("caughtSound");
+
 let fiddle = false;
 let gameOver = false;
 let score = 0;
@@ -46,6 +49,11 @@ document.body.addEventListener("mousedown", () => {
   if (!gameOver) {
     fiddle = true;
     player.el.src = player.sprites.fiddle;
+
+    if (bgMusic.paused) {
+      bgMusic.currentTime = 0;
+      bgMusic.play();
+    }
   }
 });
 document.body.addEventListener("mouseup", () => {
@@ -110,6 +118,14 @@ function endGame(message) {
   restartBtn.style.display = "inline-block";
   clearAllTimeouts();
 
+  // stop music
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+
+  // caught sound
+  caughtSound.currentTime = 0;
+  caughtSound.play();
+
   // change both bosses to catch player
   bosses.forEach(boss => {
     boss.el.src = boss.sprites.caught;
@@ -131,6 +147,10 @@ restartBtn.addEventListener("click", () => {
 
   restartBtn.style.display = "none";
   clearAllTimeouts();
+  
+  bgMusic.currentTime = 0;
+  bgMusic.play();
+
   bosses.forEach(bossCycle);
 });
 
