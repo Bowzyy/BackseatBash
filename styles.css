@@ -38,6 +38,15 @@ body {
   left: 0px;
 }
 
+/* remove the glitch where u can drag images */
+img {
+  -webkit-user-select: none; 
+  -moz-user-select: none;    
+  -ms-user-select: none;     
+  user-select: none;    
+  pointer-events: none;
+}
+
 #restart {
   margin-top: 15px;
   padding: 10px 20px;
